@@ -1,0 +1,20 @@
+//
+// Created by William on 31/10/2024.
+//
+#include <windows.h>
+#include "Menu.h"
+
+
+void cursor(int lig, int col )
+{
+    COORD mycoord;
+    mycoord.X = col;
+    mycoord.Y = lig;
+    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
+
+void color(int couleurDuTexte,int couleurDeFond)
+{
+    HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
+}
