@@ -18,3 +18,16 @@ void color(int couleurDuTexte,int couleurDeFond)
     HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
+
+
+
+#ifndef MENU_H
+#define MENU_H
+
+#endif //MENU_H
+
+void cursor(int lig, int col );
+
+void color(int couleurDuTexte,int couleurDeFond);
+
+
