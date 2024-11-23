@@ -12,6 +12,7 @@ struct joueur {
     int y;
     int bar;
     struct bar tab[10];
+    int temps_total;
     int x_pre;
     int y_pre;
     int annuler;
@@ -179,8 +180,10 @@ int main()
     int n = 0;
     for (int i = 0; i < 1000; i+=100) {
         plateau(j1,j2,i);
+        time_t debut_timer = time(NULL);
         j1 = tour (j1);
         plateau(j1,j2,i+50);
+        debut_timer = time(NULL);
         j2 = tour(j2);
     }
 
