@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "Menu.h"
-#include <time.h>
+
 struct bar {
     int x1;
     int y1;
@@ -13,7 +13,6 @@ struct joueur {
     int y;
     int bar;
     struct bar tab[10];
-    int temps_total;
     int x_pre;
     int y_pre;
     int annuler;
@@ -156,7 +155,6 @@ int main()
     j1.bar = 10;
     j1.x_pre = j1.x;
     j1.y_pre = j1.y;
-    j1.temps_total=0;
     j1.annuler=0;
     struct joueur j2;
     j2.x = 9;
@@ -164,7 +162,6 @@ int main()
     j2.bar = 10;
     j2.x_pre = j2.x;
     j2.y_pre = j2.y;
-    j2.temps_total=0;
     j2.annuler=0;
     for (int i = 0; i < 10; i++) {
         j1.tab[i].x1=20;
@@ -183,10 +180,8 @@ int main()
     int n = 0;
     for (int i = 0; i < 1000; i+=100) {
         plateau(j1,j2,i);
-        time_t debut_timer = time(NULL);
         j1 = tour (j1);
         plateau(j1,j2,i+50);
-        debut_timer = time(NULL);
         j2 = tour(j2);
     }
 
