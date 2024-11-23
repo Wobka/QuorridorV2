@@ -1,0 +1,10 @@
+struct profil {
+    char nom[20];
+    int score;
+
+};
+
+void afficher (struct profil prof) {
+    printf("Nom : %s\n", prof.nom);
+    printf("Score : %d\n", prof.score);
+}
