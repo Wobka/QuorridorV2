@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "Menu.h"
+#include <time.h>
 struct bar {
     int x1;
     int y1;
