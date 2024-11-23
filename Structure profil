@@ -8,3 +8,52 @@ void afficher (struct profil prof) {
     printf("Nom : %s\n", prof.nom);
     printf("Score : %d\n", prof.score);
 }
+
+#include <stdio.h>
+struct bar {
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+};
+
+
+
+struct joueur poser_une_barrière(struct joueur joeur1) {
+    int x1, y1, x2, y2;
+    struct bar nvbar;
+    printf("entrer les coordonnées (x1;y1) du premier coté de la barrière");
+    scanf(" %d %d", &x1, &y1);
+    printf("entrer ceux du deuxième");
+    scanf(" %d %d", &x2, &y2);
+
+
+}
+
+
+
+
+
+
+bool placement_des_barrières_condition1(struct bar *barrières, struct joueur *joueurs,char orientation,int nb_total_bar ) {
+    struct bar barrières;
+    int i=0;
+    if(barrières.x1<1||barrières.x2<1||barrières.y1<1||barrières.y2<1||barrières.x1>9||barrières.x1>9||barrières.x2>9||barrières.y1>9||barrières.y2>9)
+        printf("Cette position n'existe pas\n");
+    return 0;
+    else {
+        return 1;
+    }
+}
+
+if (bar<=0){
+    printf("Vous ne pouvez plus placer de barrières car vous neb avez plus");
+
+
+
+}
+    int main(void){
+
+    return 0;
+}
+
