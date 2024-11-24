@@ -66,19 +66,19 @@ void plateau(struct joueur j1, struct joueur j2, struct joueur j3, struct joueur
     printf(" J4 ");
     printf("\n\n");
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         cursor(j1.tab[i].x1+n,j1.tab[i].y1);
         printf("%c", 0xBA);
     }
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         cursor(j2.tab[i].x1+n,j2.tab[i].y1);
         printf("%c", 0xBA);
     }
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         cursor(j3.tab[i].x1+n,j3.tab[i].y1);
         printf("%c", 0xBA);
     }
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         cursor(j4.tab[i].x1+n, j4.tab[i].y1);
         printf("%c", 0xBA);
     }
