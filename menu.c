@@ -47,8 +47,8 @@ void afficherAide() {
 
 void afficherScores() {
     printf("Affichage des scores des joueurs\n\n");
-    // code pour afficher scores
 }
+
 void quitter() {
     printf("Merci et a bientot");
 }
@@ -71,7 +71,7 @@ int menu()
         switch (choix) {
             case 1:
                 nouvellePartie();
-                return 1;
+                return 1;  
             case 2:
                 reprendrePartie();
             return 2;
@@ -93,7 +93,7 @@ int menu()
 void cursor(int lig, int col )
 {
     COORD mycoord;
-    mycoord.X = col;
+    mycoord.X = col;  // sert à déplacer le curseur en utilisant les coordonnées 
     mycoord.Y = lig;
     SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
 }
