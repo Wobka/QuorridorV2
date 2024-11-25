@@ -7,14 +7,14 @@
 
 
 
-int charger_scores(const char *scores, Joueur joueurs[], int *nb_joueurs) {
-    FILE *fichier = fopen(scores, "r");
+int charger_scores(const char *scores, Joueur joueurs[], int *nb_joueurs) { 
+    FILE *fichier = fopen(scores, "r"); //"r" car on est en mode lecture
     if (fichier == NULL) {
         printf("Aucun fichier trouvé. Un nouveau fichier sera créé.\n");
         return 0;
     }
 
-    while (fscanf(fichier, "%s %d", joueurs[*nb_joueurs].nom, &joueurs[*nb_joueurs].score) == 2) {
+    while (fscanf(fichier, "%s %d", joueurs[*nb_joueurs].nom, &joueurs[*nb_joueurs].score) == 2) { //lit une ligne du fichier tant que nom et score sont corrects
         (*nb_joueurs)++;
     }
 
@@ -24,14 +24,14 @@ int charger_scores(const char *scores, Joueur joueurs[], int *nb_joueurs) {
 
 
 void sauvegarder_scores(const char *nom_fichier, Joueur joueurs[], int nb_joueurs) {
-    FILE *fichier = fopen(nom_fichier, "w");
+    FILE *fichier = fopen(nom_fichier, "w"); //"w" car on est en mode écriture
     if (fichier == NULL) {
         printf("Erreur : Impossible d'ouvrir le fichier pour écrire.\n");
         return;
     }
 
     for (int i = 0; i < nb_joueurs; i++) {
-        fprintf(fichier, "%s %d\n", joueurs[i].nom, joueurs[i].score);
+        fprintf(fichier, "%s %d\n", joueurs[i].nom, joueurs[i].score); //écriture du nom et du score de chaque joueur
     }
 
     fclose(fichier);
@@ -39,7 +39,7 @@ void sauvegarder_scores(const char *nom_fichier, Joueur joueurs[], int nb_joueur
 
 int trouver_joueur(Joueur joueurs[], int nb_joueurs, const char *nom) {
     for (int i = 0; i < nb_joueurs; i++) {
-        if (strcmp(joueurs[i].nom, nom) == 0) {
+        if (strcmp(joueurs[i].nom, nom) == 0) { //comparer pour voir si un joueur a déjà joué
             return i;
         }
     }
@@ -49,7 +49,7 @@ int trouver_joueur(Joueur joueurs[], int nb_joueurs, const char *nom) {
 void score (int gagnant) {
     Joueur joueurs[MAX_JOUEURS];
     int nb_joueurs = 0;
-    char fichier[] = "scores.txt";
+    char fichier[] = "scores.txt"; 
     charger_scores(fichier, joueurs, &nb_joueurs);
 
     char nom_joueur1[TAILLE_NOM], nom_joueur2[TAILLE_NOM];
