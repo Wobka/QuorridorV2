@@ -27,7 +27,7 @@ void plateau(struct joueur j1, struct joueur j2, int n) {
                 printf("   ");
             }
             if(i+1==j1.tab[i].x1 && j+2==(j1.tab[i].y1+j1.tab[i].y2)/2+1){
-                printf("%c", 0xBA);
+                printf("%c", 0xBA);  //affichage des barrières verticales sur le plateau
             }
             else if(i+1==j2.tab[i].x1 && j+2==(j2.tab[i].y1+j1.tab[i].y2)/2+1){
                 printf("%c", 0xBA);
@@ -41,7 +41,7 @@ void plateau(struct joueur j1, struct joueur j2, int n) {
     }
 
 
-    cursor(20+n,0);
+    cursor(20+n,0); // saut de ligne pour une meilleure présentation
     color(15,0);
     printf(" J1 ");
     cursor(23+n,0);
@@ -58,7 +58,7 @@ void plateau(struct joueur j1, struct joueur j2, int n) {
         }
         if (j1.tab[i].y1==j1.tab[i].y2) {
             cursor(((j1.tab[i].x1+j1.tab[i].x2)/2)+n,j1.tab[i].y1-1+1);
-            printf("%c%c%c", 0xCD, 0xCD, 0xCD);
+            printf("%c%c%c", 0xCD, 0xCD, 0xCD); //affichage des barrières horizontales sur le plateau
         }
         if (j2.tab[i].y1==j2.tab[i].y2) {
             cursor(((j2.tab[i].x1+j2.tab[i].x2)/2)+n,j2.tab[i].y1-1+1);
