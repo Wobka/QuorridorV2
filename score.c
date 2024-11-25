@@ -1,13 +1,11 @@
+#include "score.h"
 #include <stdio.h>
 #include <string.h>
 
 #define MAX_JOUEURS 2
 #define TAILLE_NOM 50
 
-typedef struct {
-    char nom[TAILLE_NOM];
-    int score;
-} Joueur;
+
 
 int charger_scores(const char *scores, Joueur joueurs[], int *nb_joueurs) {
     FILE *fichier = fopen(scores, "r");
@@ -46,4 +44,53 @@ int trouver_joueur(Joueur joueurs[], int nb_joueurs, const char *nom) {
         }
     }
     return -1;
+}
+
+void score (int gagnant) {
+    Joueur joueurs[MAX_JOUEURS];
+    int nb_joueurs = 0;
+    char fichier[] = "scores.txt";
+    charger_scores(fichier, joueurs, &nb_joueurs);
+
+    char nom_joueur1[TAILLE_NOM], nom_joueur2[TAILLE_NOM];
+    char rejouer;
+
+    printf("Bienvenue au gestionnaire de scores de jeu !\n");
+
+    printf("\nEntrez le nom du joueur 1 : ");
+    scanf("%s", nom_joueur1);
+    printf("\nEntrez le nom du joueur 2 : ");
+    scanf("%s", nom_joueur2);
+
+    int indice1 = trouver_joueur(joueurs, nb_joueurs, nom_joueur1);
+    if (indice1 == -1) {
+        strcpy(joueurs[nb_joueurs].nom, nom_joueur1);
+        joueurs[nb_joueurs].score = 0;
+        indice1 = nb_joueurs++;
+    }
+
+    int indice2 = trouver_joueur(joueurs, nb_joueurs, nom_joueur2);
+    if (indice2 == -1) {
+        strcpy(joueurs[nb_joueurs].nom, nom_joueur2);
+        joueurs[nb_joueurs].score = 0;
+        indice2 = nb_joueurs++;
+    }
+
+
+    if (gagnant == 1) {
+        joueurs[indice1].score += 5;
+    } else if (gagnant == 2) {
+        joueurs[indice2].score += 5;
+    }
+
+
+    printf("\n-----Scores :-----\n");
+    printf("%s : %d points\n", joueurs[indice1].nom, joueurs[indice1].score);
+    printf("%s : %d points\n", joueurs[indice2].nom, joueurs[indice2].score);
+
+    sauvegarder_scores(fichier, joueurs, nb_joueurs);
+
+
+
+    printf("\nMerci d'avoir joue ! Les scores finaux ont ete sauvegardes dans '%s'.\n", fichier);
 }
