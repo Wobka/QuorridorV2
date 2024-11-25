@@ -1,13 +1,15 @@
-#include <stdio.h>
+#include <windows.h>
+#include "Menu.h"
+#include "stdio.h"
 
 void nouvellePartie() {
     printf("Vous avez choisi de lancer une nouvelle partie.\n");
-    // code pour nouvelle partie il suffit juste d'appeler la fonction
+
 }
 
 void reprendrePartie() {
     printf("Vous avez choisi de reprendre une partie sauvegardee.\n");
-    // code reprendre une partie
+
 }
 
 void afficherAide() {
@@ -52,7 +54,7 @@ void quitter() {
 }
 
 
-void menu()
+int menu()
 {
     int choix;
     do {
@@ -69,26 +71,35 @@ void menu()
         switch (choix) {
             case 1:
                 nouvellePartie();
-                break;
+                return 1;
             case 2:
                 reprendrePartie();
-                break;
+            return 2;
             case 3:
                 afficherAide();
-                break;
+                return 0;
             case 4:
                 afficherScores();
-                break;
+                return 4;
             case 5:
                 quitter();
-                break;
+                return 0;
             default:
                 printf("Choix invalide, veuillez reessayer.\n");
         }
-    } while (choix > 5 || choix <= 0);
+    } while (choix != 5 && choix != 0 && choix != 2 && choix != 4);
 }
 
+void cursor(int lig, int col )
+{
+    COORD mycoord;
+    mycoord.X = col;
+    mycoord.Y = lig;
+    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), mycoord );
+}
 
-int main() {
-    menu();
+void color(int couleurDuTexte,int couleurDeFond)
+{
+    HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
